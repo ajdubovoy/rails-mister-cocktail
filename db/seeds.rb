@@ -12,3 +12,7 @@ ingredients_serialized = open(url).read
 ingredients = JSON.parse(ingredients_serialized)
 
 ingredients['drinks'].each { |ingredient| Ingredient.create(name: ingredient['strIngredient1']) }
+
+10.times { Cocktail.create(name: Faker::Coffee.blend_name) }
+
+5.times { Cocktail.all.each { |cocktail| Dose.create(cocktail: cocktail, ingredient: Ingredient.find((rand() * 160).to_i), description: Faker::Coffee.notes) } }
