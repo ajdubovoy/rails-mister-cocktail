@@ -1,0 +1,20 @@
+.form-control{
+    background-color:$light-gray !important;
+    color: $gray !important;
+}
+
+.form-control-label{
+  color: $light-gray !important;
+}
+
+.gray-background{
+  background-color: $gray;
+  border-radius: 3px;
+  padding: 30px;
+  margin: 30px;
+  // color: $light-gray;
+}
+
+.gray-background h1{
+  color: $light-gray;
+}

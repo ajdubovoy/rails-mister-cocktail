@@ -1,11 +1,27 @@
-<h1><%= @cocktail.name %></h1>
-<h2>Doses</h2>
-<ul>
-  <% @cocktail.doses.each do |dose| %>
-    <h3><%= dose.ingredient.name %></h3>
-    <p><%= dose.description %></p>
-    <%= link_to "Delete", cocktail_dose_path(@cocktail, dose), method: :delete, class: "btn btn-danger" %>
-  <% end %>
-</ul>
-<%= link_to 'New dose', new_cocktail_dose_path(@cocktail), class: 'btn btn-default' %>
-<%= link_to 'Back to list', cocktails_path, class: 'btn btn-default' %>
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('https://picsum.photos/1000/1000');">
+  <div class="banner-content">
+    <h1><%= @cocktail.name %></h1>
+    <h2>Make yourself this drink</h2>
+    <h1>🍹 ⬇️ 🍷</h1>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="text-center">`<h2>Doses</h2></div>
+    <div class="text-center"><%= link_to 'Add a new dose', new_cocktail_dose_path(@cocktail), class: 'btn btn-default btn-lg' %></div>
+  </div>
+  <div class="row">
+    <% @cocktail.doses.each do |dose| %>
+    <div class="col-xs-12 col-sm-4">
+      <div class="card " data-aos="fade-up" style="background: linear-gradient(to bottom, rgba(3,54,88,1) 0%, rgba(3,53,75,1) 100%);">
+        <div class="card-description">
+          <h2><%= dose.ingredient.name %></h2>
+          <p><%= dose.description %></p>
+          <%= link_to "Delete", cocktail_dose_path(@cocktail, dose), method: :delete, class: "btn btn-danger" %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>

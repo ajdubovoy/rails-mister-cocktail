@@ -8,4 +8,9 @@
 // layout file, like app/views/layouts/application.html.erb
 
 import 'bootstrap';
-// console.log('Hello World from Webpacker')
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+console.log('Hello World from Webpacker')
+
+import { cardTransition } from '../components/card';
+cardTransition()
