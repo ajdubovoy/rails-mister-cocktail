@@ -25,3 +25,23 @@
     <% end %>
   </div>
 </div>
+
+<div class="container">
+  <div class="row">
+    <div class="text-center">`<h2>Reviews</h2></div>
+    <div class="text-center"><%= link_to 'Add a new review', new_cocktail_review_path(@cocktail), class: 'btn btn-default btn-lg' %></div>
+  </div>
+  <div class="row">
+    <% @cocktail.reviews.each do |review| %>
+    <div class="col-xs-12 col-sm-4">
+      <div class="card " data-aos="fade-up" style="background: linear-gradient(to bottom, rgba(3,54,88,1) 0%, rgba(3,53,75,1) 100%);">
+        <div class="card-description">
+          <h2><%= '⭐️' * review.rating %></h2>
+          <p><%= review.content %></p>
+          <%= link_to "Delete", cocktail_review_path(@cocktail, review), method: :delete, class: "btn btn-default" %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+  </div>
+</div>
