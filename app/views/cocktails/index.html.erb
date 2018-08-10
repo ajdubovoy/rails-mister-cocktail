@@ -1,7 +1,7 @@
 <div class="banner" data-aos="fade-down" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url(<%= image_url 'main-banner.jpg' %>);">
   <div class="banner-content">
-    <h1>It's 5 o'clock somewhere</h1>
-    <h2>Have a drink already</h2>
+    <h1><%= @title %></h1>
+    <h2><%= @subtitle %></h2>
     <h1>🍹 ⬇️ 🍷</h1>
   </div>
 </div>
@@ -18,5 +18,14 @@
       </div>
     </div>
     <% end %>
+  </div>
+  <div class="row" id="search">
+    <div class="form-inline text-center">
+      <%= simple_form_for cocktails_path, method: "get" do |f| %>
+      <%= f.input :query, label: false, placeholder: @search %>
+      <%= f.button :submit, "Search" %>
+      <%= link_to("Cancel", cocktails_path, class: "btn btn-danger") unless @search == '' %>
+      <% end %>
+    </div>
   </div>
 </div>

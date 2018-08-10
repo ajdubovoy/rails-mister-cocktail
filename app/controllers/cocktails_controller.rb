@@ -2,7 +2,17 @@ class CocktailsController < ApplicationController
   before_action :find_cocktail, only: [:show]
 
   def index
-    @cocktails = Cocktail.all
+    if params["/cocktails"]
+      @cocktails = Cocktail.search(params["/cocktails"][:query])
+      @title = "Search for #{params["/cocktails"][:query]}"
+      @subtitle = "Check out the options"
+      @search = params["/cocktails"][:query]
+    else
+      @cocktails = Cocktail.all
+      @title = "It's 5 o'clock somewhere"
+      @subtitle = "Have a drink already"
+      @search = ''
+    end
   end
 
   def show;end
