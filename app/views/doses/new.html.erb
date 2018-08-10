@@ -5,7 +5,7 @@
   <%= f.input :ingredient, as: :select, collection: Ingredient.all %>
   <%= f.input :description %>
   <%= f.button :submit %>
-  <%= link_to "Cancel", cocktails_path, class: "btn btn-danger" %>
+  <%= link_to "Cancel", cocktail_path(@cocktail), class: "btn btn-danger" %>
 <% end %>
 </div>
 </div>
