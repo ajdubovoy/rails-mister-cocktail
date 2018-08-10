@@ -25,4 +25,4 @@ ingredients['drinks'].each { |ingredient| Ingredient.create(name: ingredient['st
   cocktail.save
 end
 
-5.times { Cocktail.all.each { |cocktail| Dose.create(cocktail: cocktail, ingredient: Ingredient.find((rand() * 160).to_i), description: Faker::Coffee.notes) } }
+5.times { Cocktail.all.each { |cocktail| Dose.create(cocktail: cocktail, ingredient: Ingredient.all.sample, description: Faker::Coffee.notes) } }
