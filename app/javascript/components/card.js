@@ -5,4 +5,4 @@ function cardTransition() {
   AOS.init();
 }
 
-export default cardTransition;
+export default { cardTransition };
