@@ -7,12 +7,22 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'open-uri'
 
+Dose.destroy_all
+Cocktail.destroy_all
+Ingredient.destroy_all
+
 url = 'https://www.thecocktaildb.com/api/json/v1/1/list.php?i=list'
 ingredients_serialized = open(url).read
 ingredients = JSON.parse(ingredients_serialized)
 
 ingredients['drinks'].each { |ingredient| Ingredient.create(name: ingredient['strIngredient1']) }
 
-10.times { Cocktail.create(name: Faker::Coffee.blend_name) }
+10.times do
+  random_image = (rand() * 50).to_i
+  photo = "https://picsum.photos/300/200?image=#{random_image}"
+  cocktail = Cocktail.new(name: Faker::Coffee.blend_name)
+  cocktail.remote_photo_url = photo
+  cocktail.save
+end
 
 5.times { Cocktail.all.each { |cocktail| Dose.create(cocktail: cocktail, ingredient: Ingredient.find((rand() * 160).to_i), description: Faker::Coffee.notes) } }
