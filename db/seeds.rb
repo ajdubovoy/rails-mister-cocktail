@@ -30,4 +30,4 @@ rand_2 =
 
 Cocktail.all.each { |cocktail| (rand() * 10 + 1).to_i.times { Dose.create(cocktail: cocktail, ingredient: Ingredient.all.sample, description: Faker::Coffee.notes) }  }
 
-Cocktail.all.each { |cocktail| (rand() * 10).to_i.times { Review.create(cocktail: cocktail, content: Faker::FamousLastWords.last_words, rating: (rand() * 5).to_i) } }
+Cocktail.all.each { |cocktail| (rand() * 10).to_i.times { Review.create(cocktail: cocktail, content: Faker::FamousLastWords.last_words, rating: (rand() * 4 + 1).to_i) } }
