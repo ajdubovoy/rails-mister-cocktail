@@ -18,7 +18,7 @@ ingredients = JSON.parse(ingredients_serialized)
 
 ingredients['drinks'].each { |ingredient| Ingredient.create(name: ingredient['strIngredient1']) }
 
-12.times do
+21.times do
   random_image = (rand() * 50).to_i
   photo = "https://picsum.photos/300/200?image=#{random_image}"
   cocktail = Cocktail.new(name: Faker::Coffee.blend_name)
