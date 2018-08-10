@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'open-uri'
 
+Review.destroy_all
 Dose.destroy_all
 Cocktail.destroy_all
 Ingredient.destroy_all
@@ -17,7 +18,7 @@ ingredients = JSON.parse(ingredients_serialized)
 
 ingredients['drinks'].each { |ingredient| Ingredient.create(name: ingredient['strIngredient1']) }
 
-10.times do
+12.times do
   random_image = (rand() * 50).to_i
   photo = "https://picsum.photos/300/200?image=#{random_image}"
   cocktail = Cocktail.new(name: Faker::Coffee.blend_name)
@@ -25,10 +26,8 @@ ingredients['drinks'].each { |ingredient| Ingredient.create(name: ingredient['st
   cocktail.save
 end
 
-rand_1 = (rand() * 10).to_i
-rand_2 = (rand() * 10).to_i
-rand_3 = (rand() * 5).to_i
+rand_2 = 
 
-rand_1.times { Cocktail.all.each { |cocktail| Dose.create(cocktail: cocktail, ingredient: Ingredient.all.sample, description: Faker::Coffee.notes) } }
+Cocktail.all.each { |cocktail| (rand() * 10 + 1).to_i.times { Dose.create(cocktail: cocktail, ingredient: Ingredient.all.sample, description: Faker::Coffee.notes) }  }
 
-rand_2.times { Cocktail.all.each { |cocktail| Review.create(cocktail: cocktail, content: Faker::FamousLastWords.last_words, rating: rand_3) } }
+Cocktail.all.each { |cocktail| (rand() * 10).to_i.times { Review.create(cocktail: cocktail, content: Faker::FamousLastWords.last_words, rating: (rand() * 5).to_i) } }
